@@ -34,12 +34,9 @@ public class Config {
             .comment("A list of items to log on common setup.")
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), () -> "", Config::validateItemName);
 
-    // 聊天系统配置
     public static final ModConfigSpec.BooleanValue DISABLE_VANILLA_CHAT = BUILDER
             .comment("是否禁用原版聊天系统")
             .define("disableVanillaChat", false);
-
-    // 聊天日志配置
     public static final ModConfigSpec.BooleanValue ENABLE_CHAT_LOGGING = BUILDER
             .comment("是否启用聊天日志记录功能")
             .define("enableChatLogging", true);

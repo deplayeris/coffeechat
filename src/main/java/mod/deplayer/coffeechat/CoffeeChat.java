@@ -35,7 +35,7 @@ public class CoffeeChat {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "coffeechat";
     //TODO:记得改版本
-    public static final String VERSION = "0.1d+1.21.11";
+    public static final String VERSION = "0.1d.1+1.21.11";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "coffeechat" namespace
@@ -105,14 +105,6 @@ public class CoffeeChat {
                 }
             }
         });
-
-        if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-        }
-
-        LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
-
-        Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
 
     // Add the example block item to the building blocks tab

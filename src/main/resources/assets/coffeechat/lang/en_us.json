@@ -1,7 +1,7 @@
 {
   "itemGroup.coffeechat": "CoffeeChat",
-  "block.coffeechat.example_block": "VerfB",
-  "item.coffeechat.example_item": "VerfI",
+  "block.coffeechat.example_block": "Existence verification Block",
+  "item.coffeechat.example_item": "Existence verification Item",
 
   "coffeechat.configuration.title": "CoffeeChat Configs",
   "coffeechat.configuration.section.coffeechat.common.toml": "CoffeeChat Configs",
