@@ -1,0 +1,13 @@
+{
+  "itemGroup.coffeechat": "CoffeeChat",
+  "block.coffeechat.example_block": "VerfB",
+  "item.coffeechat.example_item": "VerfI",
+
+  "coffeechat.configuration.title": "CoffeeChat Configs",
+  "coffeechat.configuration.section.coffeechat.common.toml": "CoffeeChat Configs",
+  "coffeechat.configuration.section.coffeechat.common.toml.title": "CoffeeChat Configs",
+  "coffeechat.configuration.items": "Item List",
+  "coffeechat.configuration.logDirtBlock": "Log Dirt Block",
+  "coffeechat.configuration.magicNumberIntroduction": "Magic Number Text",
+  "coffeechat.configuration.magicNumber": "Magic Number"
+}
