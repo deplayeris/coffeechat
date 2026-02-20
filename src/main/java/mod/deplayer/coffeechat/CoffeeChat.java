@@ -89,12 +89,22 @@ public class CoffeeChat {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("--------------------------Deplayer CoffeeChat--------------------------");
-        LOGGER.info("CoffeeChat Version:" + VERSION);
-        LOGGER.info("Susscssfully loaded!");
-        LOGGER.info("--------------------------Deplayer CoffeeChat--------------------------");
-
+        // 初始化服务端日志系统
+        mod.deplayer.coffeechat.irc.logger.ChatLogger.initialize();
+        LOGGER.info("服务端聊天日志系统已初始化");
+        
+        // 在客户端环境中初始化客户端日志系统
+        event.enqueueWork(() -> {
+            if (net.neoforged.api.distmarker.Dist.CLIENT == net.neoforged.api.distmarker.Dist.CLIENT) {
+                try {
+                    java.lang.reflect.Method initMethod = mod.deplayer.coffeechat.irc.logger.ChatLogger.class.getMethod("initializeClient");
+                    initMethod.invoke(null);
+                    LOGGER.info("客户端聊天日志系统已初始化");
+                } catch (Exception e) {
+                    LOGGER.error("客户端聊天日志初始化失败: " + e.getMessage());
+                }
+            }
+        });
 
         if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
             LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
