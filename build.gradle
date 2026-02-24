@@ -142,8 +142,11 @@ task copyIrcResources(type: Copy) {
     from zipTree(file('irccore/use-this-coffeeirc-26.dr1.1-sources.jar'))
     include 'log4j2.xml'
     into 'src/main/resources/'
-    rename 'log4j2.xml', 'log4j2.xml'  // 重命名避免冲突
+    rename 'log4j2.xml', 'log4j2-coffeeirc.xml'  // 重命名避免冲突
 }
+
+// 确保资源配置在编译前完成
+tasks.processResources.dependsOn copyIrcResources
 
 sourceSets {
     main {
