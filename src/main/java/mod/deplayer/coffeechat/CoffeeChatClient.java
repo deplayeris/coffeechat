@@ -9,7 +9,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import mod.deplayer.coffeechat.coffeeirc.client.Client;
+import mod.deplayer.coffeechat.coffeeirc.client.*;
+
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = CoffeeChat.MODID, dist = Dist.CLIENT)

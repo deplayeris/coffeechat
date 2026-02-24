@@ -128,6 +128,33 @@ configurations {
     embed
     implementation.extendsFrom(embed)
 }
+// 将IRC源码解压并添加到源码路径
+// 首先解压源码JAR到临时目录
+task extractIrcSources(type: Copy) {
+    from zipTree(file('irccore/use-this-coffeeirc-26.dr1.1-sources.jar'))
+    into 'build/extracted-sources'
+    // 排除配置文件，避免冲突
+    exclude 'log4j2.xml'
+}
+
+// 如果需要包含IRC的资源配置文件
+task copyIrcResources(type: Copy) {
+    from zipTree(file('irccore/use-this-coffeeirc-26.dr1.1-sources.jar'))
+    include 'log4j2.xml'
+    into 'src/main/resources/'
+    rename 'log4j2.xml', 'log4j2.xml'  // 重命名避免冲突
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += ['build/extracted-sources']
+        }
+    }
+}
+
+// 确保在编译前执行源码解压
+tasks.compileJava.dependsOn extractIrcSources
 
 dependencies {
     // Example optional mod dependency with JEI
@@ -140,11 +167,7 @@ dependencies {
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
-
-    // IRC Core Library - embed this non-mod library
-    embed files("irccore/use-this-coffeeirc-core-26.dr1.1.jar")
-
+    // implementation "blank:coolmod-${mc_version}:${coolmod_version}
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
 
