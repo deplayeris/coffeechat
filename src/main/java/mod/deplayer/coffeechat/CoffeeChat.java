@@ -89,22 +89,7 @@ public class CoffeeChat {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // 初始化服务端日志系统
-        mod.deplayer.coffeechat.irc.logger.ChatLogger.initialize();
-        LOGGER.info("服务端聊天日志系统已初始化");
-        
-        // 在客户端环境中初始化客户端日志系统
-        event.enqueueWork(() -> {
-            if (net.neoforged.api.distmarker.Dist.CLIENT == net.neoforged.api.distmarker.Dist.CLIENT) {
-                try {
-                    java.lang.reflect.Method initMethod = mod.deplayer.coffeechat.irc.logger.ChatLogger.class.getMethod("initializeClient");
-                    initMethod.invoke(null);
-                    LOGGER.info("客户端聊天日志系统已初始化");
-                } catch (Exception e) {
-                    LOGGER.error("客户端聊天日志初始化失败: " + e.getMessage());
-                }
-            }
-        });
+
     }
 
     // Add the example block item to the building blocks tab

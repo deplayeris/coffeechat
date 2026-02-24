@@ -9,5 +9,17 @@
   "coffeechat.configuration.items": "Item List",
   "coffeechat.configuration.logDirtBlock": "Log Dirt Block",
   "coffeechat.configuration.magicNumberIntroduction": "Magic Number Text",
-  "coffeechat.configuration.magicNumber": "Magic Number"
+  "coffeechat.configuration.magicNumber": "Magic Number",
+
+  "key.categories.coffeechat": "无忧聊",
+  "key.coffeechat.open_rich_text_input": "打开富文本输入框",
+  "key.coffeechat.open_text_input": "打开文本输入界面",
+
+  "screen.coffeechat.rich_text_input": "富文本消息输入",
+  "screen.coffeechat.text_input": "文本消息输入",
+  
+  "gui.coffeechat.input_box": "输入您的消息...",
+  "gui.coffeechat.input_label": "消息内容：",
+  "gui.coffeechat.send": "发送",
+  "gui.coffeechat.cancel": "取消"
 }

@@ -9,5 +9,17 @@
   "coffeechat.configuration.items": "Item List",
   "coffeechat.configuration.logDirtBlock": "Log Dirt Block",
   "coffeechat.configuration.magicNumberIntroduction": "Magic Number Text",
-  "coffeechat.configuration.magicNumber": "Magic Number"
+  "coffeechat.configuration.magicNumber": "Magic Number",
+
+  "key.categories.coffeechat": "CoffeeChat",
+  "key.coffeechat.open_rich_text_input": "Open Rich Text Input",
+  "key.coffeechat.open_text_input": "Open Text Input Screen",
+
+  "screen.coffeechat.rich_text_input": "Rich Text Message Input",
+  "screen.coffeechat.text_input": "Text Message Input",
+  
+  "gui.coffeechat.input_box": "Enter your message...",
+  "gui.coffeechat.input_label": "Message Content:",
+  "gui.coffeechat.send": "Send",
+  "gui.coffeechat.cancel": "Cancel"
 }
