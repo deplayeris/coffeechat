@@ -13,6 +13,7 @@ import mod.deplayer.coffeechat.coffeeirc.client.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.config.Configurator;
 import java.io.File;
+import net.minecraft.client.player.LocalPlayer;
 
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
@@ -27,42 +28,34 @@ public class CoffeeChatClient {
         // Do not forget to add translations for your config options to the en_us.json file.
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
-
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // 初始化 CoffeeIRC 日志配置
-        initializeCoffeeIRCLogging();
         
         CoffeeChat.LOGGER.info("--------------------------Deplayer CoffeeChat--------------------------");
         CoffeeChat.LOGGER.info("CoffeeChat Version:" + CoffeeChat.VERSION);
         CoffeeChat.LOGGER.info("Successfully loaded!");
         CoffeeChat.LOGGER.info("--------------------------Deplayer CoffeeChat--------------------------");
-
-        Client client = new Client(4, "127.0.0.1", 10025,"xcv", "dp515", "CoffeeChat");
-        client.Connect();
-        client.disconnect();
+        
+        //Client client = new Client(4, "127.0.0.1", 10025,, "CoffeeChat无忧聊");
     }
     
     private static void initializeCoffeeIRCLogging() {
         try {
-            // 创建日志目录
             File logDir = new File("./ciclogs");
             if (!logDir.exists()) {
                 logDir.mkdirs();
             }
-            
-            // 使用类路径资源加载配置
             Configurator.initialize("CoffeeIRC", CoffeeChatClient.class.getClassLoader(), "log4j2-coffeeirc.xml");
             LogManager.getLogger("mod.deplayer.coffeechat.coffeeirc.client").info("CoffeeIRC 客户端日志系统初始化完成");
             LogManager.getLogger("mod.deplayer.coffeechat.coffeeirc.server").info("CoffeeIRC 服务器日志系统初始化完成");
             
         } catch (Exception e) {
             CoffeeChat.LOGGER.warn("CoffeeIRC 日志配置初始化失败: " + e.getMessage());
-            // 降级方案：直接配置日志
             setupFallbackLogging();
         }
     }
-    
+
+    /// 这里是CIC单独记录日志的一些专门设置，<br>MC如果按照普通方式记录的话，会直接记录到游戏日志里面
     private static void setupFallbackLogging() {
         try {
             // 直接编程方式配置日志
